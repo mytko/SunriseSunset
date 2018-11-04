@@ -7,8 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC3A4E912189BDB8003F7BD3 /* SearchLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3A4E902189BDB8003F7BD3 /* SearchLocation.storyboard */; };
+		AC3A4E932189BF69003F7BD3 /* SearchLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */; };
+		AC418B822188476900D8E7A6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B812188476900D8E7A6 /* Request.swift */; };
+		AC418B882188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B842188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift */; };
+		AC418B892188C56700D8E7A6 /* SolarInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B852188C56700D8E7A6 /* SolarInfo+CoreDataProperties.swift */; };
+		AC418B8A2188C56700D8E7A6 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B862188C56700D8E7A6 /* Location+CoreDataClass.swift */; };
+		AC418B8B2188C56700D8E7A6 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B872188C56700D8E7A6 /* Location+CoreDataProperties.swift */; };
+		AC418B8D2188D06100D8E7A6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B8C2188D06100D8E7A6 /* CoreDataStack.swift */; };
+		AC418B8F2188D0FC00D8E7A6 /* LocationsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */; };
+		AC418B932188D4E400D8E7A6 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B922188D4E400D8E7A6 /* LocationCell.swift */; };
+		AC418B9521891A1100D8E7A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B9421891A1100D8E7A6 /* Constants.swift */; };
+		AC739EA6218B3A750023877A /* PlaceAutocompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */; };
+		AC739EA8218B3C260023877A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA7218B3C260023877A /* Place.swift */; };
+		AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */; };
+		ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC0B0D218E13A1001209BE /* LocationManager.swift */; };
+		ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */; };
+		ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */; };
 		ACF4AE7D2187A6C90092C453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */; };
-		ACF4AE7F2187A6C90092C453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE7E2187A6C90092C453 /* ViewController.swift */; };
+		ACF4AE7F2187A6C90092C453 /* SolarInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */; };
 		ACF4AE822187A6C90092C453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF4AE802187A6C90092C453 /* Main.storyboard */; };
 		ACF4AE852187A6C90092C453 /* SunriseSunset.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE832187A6C90092C453 /* SunriseSunset.xcdatamodeld */; };
 		ACF4AE872187A6CA0092C453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF4AE862187A6CA0092C453 /* Assets.xcassets */; };
@@ -16,9 +33,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC3A4E902189BDB8003F7BD3 /* SearchLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchLocation.storyboard; sourceTree = "<group>"; };
+		AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationController.swift; sourceTree = "<group>"; };
+		AC418B812188476900D8E7A6 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		AC418B842188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SolarInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC418B852188C56700D8E7A6 /* SolarInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SolarInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AC418B862188C56700D8E7A6 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC418B872188C56700D8E7A6 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AC418B8C2188D06100D8E7A6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListController.swift; sourceTree = "<group>"; };
+		AC418B922188D4E400D8E7A6 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		AC418B9421891A1100D8E7A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAutocompleteRequest.swift; sourceTree = "<group>"; };
+		AC739EA7218B3C260023877A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAutocompleteCell.swift; sourceTree = "<group>"; };
+		ACAC0B0D218E13A1001209BE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunInfoCell.swift; sourceTree = "<group>"; };
+		ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoCell.swift; sourceTree = "<group>"; };
 		ACF4AE792187A6C90092C453 /* SunriseSunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunriseSunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACF4AE7E2187A6C90092C453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoController.swift; sourceTree = "<group>"; };
 		ACF4AE812187A6C90092C453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACF4AE842187A6C90092C453 /* SunriseSunset.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SunriseSunset.xcdatamodel; sourceTree = "<group>"; };
 		ACF4AE862187A6CA0092C453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +71,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC418B832188C54900D8E7A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC418B842188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift */,
+				AC418B852188C56700D8E7A6 /* SolarInfo+CoreDataProperties.swift */,
+				AC418B862188C56700D8E7A6 /* Location+CoreDataClass.swift */,
+				AC418B872188C56700D8E7A6 /* Location+CoreDataProperties.swift */,
+				AC418B8C2188D06100D8E7A6 /* CoreDataStack.swift */,
+				ACF4AE832187A6C90092C453 /* SunriseSunset.xcdatamodeld */,
+				ACAC0B0D218E13A1001209BE /* LocationManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC418B902188D12700D8E7A6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */,
+				AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */,
+				AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AC418B912188D1B500D8E7A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC418B922188D4E400D8E7A6 /* LocationCell.swift */,
+				AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */,
+				ACF4AE802187A6C90092C453 /* Main.storyboard */,
+				AC3A4E902189BDB8003F7BD3 /* SearchLocation.storyboard */,
+				ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */,
+				ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ACF4AE702187A6C90092C453 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +127,17 @@
 		ACF4AE7B2187A6C90092C453 /* SunriseSunset */ = {
 			isa = PBXGroup;
 			children = (
+				AC418B832188C54900D8E7A6 /* Model */,
+				AC418B912188D1B500D8E7A6 /* View */,
+				AC418B902188D12700D8E7A6 /* Controller */,
 				ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */,
-				ACF4AE7E2187A6C90092C453 /* ViewController.swift */,
-				ACF4AE802187A6C90092C453 /* Main.storyboard */,
 				ACF4AE862187A6CA0092C453 /* Assets.xcassets */,
 				ACF4AE882187A6CA0092C453 /* LaunchScreen.storyboard */,
 				ACF4AE8B2187A6CA0092C453 /* Info.plist */,
-				ACF4AE832187A6C90092C453 /* SunriseSunset.xcdatamodeld */,
+				AC418B812188476900D8E7A6 /* Request.swift */,
+				AC418B9421891A1100D8E7A6 /* Constants.swift */,
+				AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */,
+				AC739EA7218B3C260023877A /* Place.swift */,
 			);
 			path = SunriseSunset;
 			sourceTree = "<group>";
@@ -128,6 +203,7 @@
 				ACF4AE8A2187A6CA0092C453 /* LaunchScreen.storyboard in Resources */,
 				ACF4AE872187A6CA0092C453 /* Assets.xcassets in Resources */,
 				ACF4AE822187A6C90092C453 /* Main.storyboard in Resources */,
+				AC3A4E912189BDB8003F7BD3 /* SearchLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +214,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACF4AE7F2187A6C90092C453 /* ViewController.swift in Sources */,
+				AC418B892188C56700D8E7A6 /* SolarInfo+CoreDataProperties.swift in Sources */,
+				ACF4AE7F2187A6C90092C453 /* SolarInfoController.swift in Sources */,
+				AC418B882188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift in Sources */,
+				AC3A4E932189BF69003F7BD3 /* SearchLocationController.swift in Sources */,
+				AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */,
+				AC418B8D2188D06100D8E7A6 /* CoreDataStack.swift in Sources */,
+				AC418B8F2188D0FC00D8E7A6 /* LocationsListController.swift in Sources */,
 				ACF4AE852187A6C90092C453 /* SunriseSunset.xcdatamodeld in Sources */,
+				AC739EA6218B3A750023877A /* PlaceAutocompleteRequest.swift in Sources */,
+				AC418B932188D4E400D8E7A6 /* LocationCell.swift in Sources */,
+				AC739EA8218B3C260023877A /* Place.swift in Sources */,
+				ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */,
+				AC418B8A2188C56700D8E7A6 /* Location+CoreDataClass.swift in Sources */,
+				AC418B8B2188C56700D8E7A6 /* Location+CoreDataProperties.swift in Sources */,
+				AC418B822188476900D8E7A6 /* Request.swift in Sources */,
+				ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */,
 				ACF4AE7D2187A6C90092C453 /* AppDelegate.swift in Sources */,
+				ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */,
+				AC418B9521891A1100D8E7A6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

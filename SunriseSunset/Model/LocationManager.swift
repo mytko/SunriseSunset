@@ -27,6 +27,22 @@ class LocationSunInfoManager: NSObject {
     
     private var locationManager = CLLocationManager()
  
+    init(completion: @escaping (Location) -> ()) {
+        self.completion = completion
+    }
+    
+    init(location: Location, completion: @escaping (Location) -> ()) {
+        self.location = location
+        self.completion = completion
+    }
+    
+    init(latitude: Double, longitude: Double, completion: @escaping (Location) -> ()) {
+        self.location = Location(context: CoreDataStack.shared.managedContext)
+        location.latitude = latitude
+        location.longitude = longitude
+        self.completion = completion
+    }
+    
     private func configureManager() {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -52,6 +68,18 @@ class LocationSunInfoManager: NSObject {
         }
     }
     
+    func geocodeLocation(completion: @escaping (Location) -> ()) {
+        let geocodingLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        CLGeocoder().reverseGeocodeLocation(geocodingLocation) { (placeMarks, error) in
+            guard let placeNotations = placeMarks?[0] else {
+                return
+            }
+            print(placeNotations)
+            self.setLocationPlacemarks(placeNotations)
+            completion(self.location)
+        }
+    }
+    
     private func setSolarInformation(_ completion: @escaping ([SolarInfo]) -> ()) {
         let request = SunriseSunsetRequest(latitude: location.latitude, longtitude: location.longitude) { solarInformation in
             let result = solarInformation.map { info -> SolarInfo in
@@ -68,15 +96,6 @@ class LocationSunInfoManager: NSObject {
             completion(result)
         }
         request.fetchSunInfoFrom(date: Date(), days: 7)
-    }
-
-    init(completion: @escaping (Location) -> ()) {
-        self.completion = completion
-    }
-    
-    init(location: Location, completion: @escaping (Location) -> ()) {
-        self.location = location
-        self.completion = completion
     }
     
     func getCurrentLocation() {
@@ -97,11 +116,7 @@ extension LocationSunInfoManager: CLLocationManagerDelegate {
         
         //Setting Location placemarks
         dispatchGroup.enter()
-        CLGeocoder().reverseGeocodeLocation(currentLocation) { (placeMarks, error) in
-            guard let placeNotations = placeMarks?[0] else {
-                return
-            }
-            self.setLocationPlacemarks(placeNotations)
+        geocodeLocation {_ in
             self.dispatchGroup.leave()
         }
         

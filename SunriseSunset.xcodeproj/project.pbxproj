@@ -24,6 +24,7 @@
 		ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC0B0D218E13A1001209BE /* LocationManager.swift */; };
 		ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */; };
 		ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */; };
+		ACF407002190677F0041E662 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF406FF2190677F0041E662 /* DatePickerController.swift */; };
 		ACF4AE7D2187A6C90092C453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */; };
 		ACF4AE7F2187A6C90092C453 /* SolarInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */; };
 		ACF4AE822187A6C90092C453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF4AE802187A6C90092C453 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		ACAC0B0D218E13A1001209BE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunInfoCell.swift; sourceTree = "<group>"; };
 		ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoCell.swift; sourceTree = "<group>"; };
+		ACF406FF2190677F0041E662 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		ACF4AE792187A6C90092C453 /* SunriseSunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunriseSunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */,
 				AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */,
 				AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */,
+				ACF406FF2190677F0041E662 /* DatePickerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				AC739EA8218B3C260023877A /* Place.swift in Sources */,
 				ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */,
 				AC418B8A2188C56700D8E7A6 /* Location+CoreDataClass.swift in Sources */,
+				ACF407002190677F0041E662 /* DatePickerController.swift in Sources */,
 				AC418B8B2188C56700D8E7A6 /* Location+CoreDataProperties.swift in Sources */,
 				AC418B822188476900D8E7A6 /* Request.swift in Sources */,
 				ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */,

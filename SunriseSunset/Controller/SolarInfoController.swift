@@ -19,6 +19,8 @@ class SolarInfoController: UIViewController {
     
     var selectedLocationIndex: Int = 0
     
+    var selectedDate: Date!
+    
     let pageControl: UIPageControl = {
         let control = UIPageControl()
         control.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +34,7 @@ class SolarInfoController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(fetchSolarData), name: NSNotification.Name("locationCalculated"), object: nil)
         toolBar.addSubview(pageControl)
         let request: NSFetchRequest<Location> = Location.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "city", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "x", ascending: true)
         request.sortDescriptors = [sortDescriptor]
         fetchedRC = NSFetchedResultsController<Location>(fetchRequest: request, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedRC.delegate = self
@@ -41,7 +43,6 @@ class SolarInfoController: UIViewController {
     func refreshUI() {
         do {
             try fetchedRC.performFetch()
-            print(fetchedRC.fetchedObjects?.count)
             pageControl.numberOfPages = fetchedRC.fetchedObjects?.count ?? 0
             locationcSolarInfoCollectionView.reloadData()
         } catch {
@@ -72,6 +73,14 @@ class SolarInfoController: UIViewController {
             pageControl.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
             pageControl.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor)
         ])
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let flowLayout = locationcSolarInfoCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        flowLayout.invalidateLayout()
     }
 }
 

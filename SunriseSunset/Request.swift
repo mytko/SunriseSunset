@@ -49,13 +49,11 @@ class SunriseSunsetRequest {
             components.queryItems?.append(URLQueryItem(name: "date", value: dateFormatter.string(from: nextDate)))
 
             let url = components.url!
-            print(url)
             dispatchGroup.enter()
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 var info = try! JSONDecoder().decode(SunriseSunsetInfo.self, from: data!)
                 info.date = dateFormatter.string(from: nextDate)
                 sunInfo.append(info)
-                print("\(index): \(info)")
                 dispatchGroup.leave()
             }.resume()
         }

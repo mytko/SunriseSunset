@@ -19,15 +19,11 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SQz-9M-tme">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="5ps-Xu-ign" appends="YES" id="Uql-m9-Dag"/>
+                                </connections>
                             </mapView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rr5-S2-o0W">
-                                <rect key="frame" x="136" y="611" width="103" height="36"/>
-                                <color key="backgroundColor" red="0.39470726249999999" green="0.69375407700000002" blue="0.4160192311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Add Location">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Ie-ne6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,30 +62,64 @@
                                     <outlet property="delegate" destination="Pel-Rj-fko" id="fL7-ue-CkB"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdI-6K-R5c">
+                                <rect key="frame" x="103" y="617" width="169.5" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="uOY-2Z-tms">
+                                <rect key="frame" x="103" y="617" width="169.5" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fld-Si-KQE">
+                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLr-0t-Eyp">
+                                        <rect key="frame" x="79.5" y="0.0" width="90" height="30"/>
+                                        <color key="backgroundColor" red="0.39470726249999999" green="0.69375407700000002" blue="0.4160192311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Add Location">
+                                            <color key="titleColor" red="0.95989583329999995" green="0.95989583329999995" blue="0.95989583329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.18434625864028931" green="0.18467137217521667" blue="0.16382023692131042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SQz-9M-tme" firstAttribute="leading" secondItem="CTv-cv-uwk" secondAttribute="leading" id="8El-q8-BO5"/>
+                            <constraint firstItem="SQz-9M-tme" firstAttribute="leading" secondItem="ZNm-UQ-gLe" secondAttribute="leading" id="8El-q8-BO5"/>
                             <constraint firstAttribute="trailing" secondItem="bxi-Ie-ne6" secondAttribute="trailing" id="9HC-BS-ARe"/>
-                            <constraint firstItem="CTv-cv-uwk" firstAttribute="bottom" secondItem="SQz-9M-tme" secondAttribute="bottom" id="AVL-iS-1Dv"/>
-                            <constraint firstItem="CTv-cv-uwk" firstAttribute="trailing" secondItem="SQz-9M-tme" secondAttribute="trailing" id="IE0-Cm-8o3"/>
-                            <constraint firstItem="CTv-cv-uwk" firstAttribute="bottom" secondItem="Rr5-S2-o0W" secondAttribute="bottom" constant="20" id="P6c-VI-otu"/>
+                            <constraint firstAttribute="bottom" secondItem="SQz-9M-tme" secondAttribute="bottom" id="AVL-iS-1Dv"/>
+                            <constraint firstItem="BdI-6K-R5c" firstAttribute="bottom" secondItem="uOY-2Z-tms" secondAttribute="bottom" id="EKp-sM-JYF"/>
+                            <constraint firstItem="BdI-6K-R5c" firstAttribute="leading" secondItem="uOY-2Z-tms" secondAttribute="leading" id="FlH-Vv-zCh"/>
+                            <constraint firstItem="BdI-6K-R5c" firstAttribute="top" secondItem="uOY-2Z-tms" secondAttribute="top" id="HSC-Sc-cIB"/>
+                            <constraint firstAttribute="trailing" secondItem="SQz-9M-tme" secondAttribute="trailing" id="IE0-Cm-8o3"/>
                             <constraint firstItem="bxi-Ie-ne6" firstAttribute="leading" secondItem="ZNm-UQ-gLe" secondAttribute="leading" id="Q7v-qg-Sl3"/>
-                            <constraint firstItem="SQz-9M-tme" firstAttribute="top" secondItem="CTv-cv-uwk" secondAttribute="top" id="kv7-eD-VOr"/>
+                            <constraint firstItem="uOY-2Z-tms" firstAttribute="centerX" secondItem="ZNm-UQ-gLe" secondAttribute="centerX" id="fO7-Mf-I55"/>
+                            <constraint firstItem="SQz-9M-tme" firstAttribute="top" secondItem="ZNm-UQ-gLe" secondAttribute="top" constant="64" id="kv7-eD-VOr"/>
                             <constraint firstItem="bxi-Ie-ne6" firstAttribute="top" secondItem="CTv-cv-uwk" secondAttribute="top" id="lsf-OQ-XAS"/>
-                            <constraint firstItem="Rr5-S2-o0W" firstAttribute="centerX" secondItem="ZNm-UQ-gLe" secondAttribute="centerX" id="zA5-0K-yBV"/>
+                            <constraint firstItem="BdI-6K-R5c" firstAttribute="trailing" secondItem="uOY-2Z-tms" secondAttribute="trailing" id="n10-Vs-F5l"/>
+                            <constraint firstItem="CTv-cv-uwk" firstAttribute="bottom" secondItem="uOY-2Z-tms" secondAttribute="bottom" constant="20" id="vE8-gW-DJb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CTv-cv-uwk"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qjv-tP-h6S"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="qjv-tP-h6S"/>
                     <connections>
-                        <outlet property="addLocationButton" destination="Rr5-S2-o0W" id="Kf1-4F-NSm"/>
+                        <outlet property="addLocationButton" destination="VLr-0t-Eyp" id="BWH-WG-gA8"/>
+                        <outlet property="locationLabel" destination="Fld-Si-KQE" id="x8C-Fd-b1C"/>
                         <outlet property="mapView" destination="SQz-9M-tme" id="7Zi-At-V7I"/>
                         <outlet property="suggestionTableView" destination="bxi-Ie-ne6" id="5pq-7D-VWz"/>
                         <outlet property="suggestionTableViewHeightConstraint" destination="RF0-v9-esS" id="p07-xl-VeN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQO-Uz-dsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1.5" id="5ps-Xu-ign">
+                    <connections>
+                        <action selector="handleLongPress:" destination="Pel-Rj-fko" id="6eq-hB-jyR"/>
+                        <outlet property="delegate" destination="Pel-Rj-fko" id="PVw-1e-xd2"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1224.8" y="120.98950524737631"/>
         </scene>
@@ -98,7 +128,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="U3v-wQ-72G" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HCW-cp-NYX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="HCW-cp-NYX">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

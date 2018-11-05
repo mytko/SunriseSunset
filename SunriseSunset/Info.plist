@@ -45,5 +45,10 @@
 	<string>Allow in use </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow accesing your location.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

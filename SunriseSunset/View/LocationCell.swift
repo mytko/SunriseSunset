@@ -15,8 +15,9 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     func setupCell(location: Location) {
-        sunriseLabel.text = "6:21"
-        sunsetLabel.text = "17:58"
+        let sunInfo = location.solarInformation.first!
+        sunriseLabel.text = sunInfo.sunrise
+        sunsetLabel.text = sunInfo.sunset
         locationDescriptionLabel.text = location.city 
         timeLabel.text = location.time
     }

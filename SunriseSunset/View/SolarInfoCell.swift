@@ -40,7 +40,7 @@ class SolarInfoCell: UICollectionViewCell {
     }
     
     func updateCell() {
-        let today = location.solarInformation.first!
+        let today =  location.solarInformation.first!
         print(today.sunset)
         print(convertTime(today.sunset!))
         sunsetLabel.text = convertTime(today.sunset ?? "")

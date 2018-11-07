@@ -21,6 +21,7 @@
 		AC739EA6218B3A750023877A /* PlaceAutocompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */; };
 		AC739EA8218B3C260023877A /* CodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA7218B3C260023877A /* CodableObjects.swift */; };
 		AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */; };
+		ACA437902193A0A000810E74 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACA4378F2193A0A000810E74 /* Keys.plist */; };
 		ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC0B0D218E13A1001209BE /* LocationManager.swift */; };
 		ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */; };
 		ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */; };
@@ -48,6 +49,7 @@
 		AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAutocompleteRequest.swift; sourceTree = "<group>"; };
 		AC739EA7218B3C260023877A /* CodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjects.swift; sourceTree = "<group>"; };
 		AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAutocompleteCell.swift; sourceTree = "<group>"; };
+		ACA4378F2193A0A000810E74 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		ACAC0B0D218E13A1001209BE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunInfoCell.swift; sourceTree = "<group>"; };
 		ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				ACF4AE862187A6CA0092C453 /* Assets.xcassets */,
 				ACF4AE882187A6CA0092C453 /* LaunchScreen.storyboard */,
 				ACF4AE8B2187A6CA0092C453 /* Info.plist */,
+				ACA4378F2193A0A000810E74 /* Keys.plist */,
 			);
 			path = SunriseSunset;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				ACF4AE872187A6CA0092C453 /* Assets.xcassets in Resources */,
 				ACF4AE822187A6C90092C453 /* Main.storyboard in Resources */,
 				AC3A4E912189BDB8003F7BD3 /* SearchLocation.storyboard in Resources */,
+				ACA437902193A0A000810E74 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

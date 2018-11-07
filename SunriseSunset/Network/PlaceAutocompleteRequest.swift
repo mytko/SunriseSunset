@@ -28,13 +28,20 @@ class PlaceAutocompleteRequest: NSObject {
     }
     
     func fetchPlaceDetailInformation(for id: String) {
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+            let url = URL(string: path),
+            let dict = NSDictionary(contentsOf: url),
+            let key = dict["key"] as? String else {
+            return
+        }
+        
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "maps.googleapis.com"
         urlComponents.path = "/maps/api/place/details/json"
         urlComponents.queryItems = [
             URLQueryItem(name: "placeid", value: id),
-            URLQueryItem(name: "key", value: "AIzaSyDKStABOvHicYu99-m-qa64dQcYeK8Y4tM")
+            URLQueryItem(name: "key", value: key)
         ]
         
         URLSession.shared.dataTask(with: urlComponents.url!) { (data, response, error) in

@@ -51,7 +51,6 @@ class LocationsListController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "solarInfo" {
             if let destination = segue.destination as? SolarInfoController, let cell = sender as? UITableViewCell {
-                print(locationsTableView.indexPath(for: cell)!.section)
                 destination.selectedLocation = fetchedResultsController?.fetchedObjects?[locationsTableView.indexPath(for: cell)!.section]
             }
         }

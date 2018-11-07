@@ -31,9 +31,8 @@ class SunriseSunsetRequest {
         ]
         
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat  = "YY-MM-dd"
+
+        dateFormatter.dateFormat  = "yyyy-MM-dd"
         let calendar = Calendar.current
         
         let date = Date()
@@ -41,6 +40,8 @@ class SunriseSunsetRequest {
         let dispatchGroup = DispatchGroup()
         
         var sunInfo: [SunriseSunsetInfo] = []
+        
+        print(dateFormatter.string(from: date))
         
         let _ = DispatchQueue.global(qos: .userInitiated)
         DispatchQueue.concurrentPerform(iterations: days) { index in
@@ -62,25 +63,28 @@ class SunriseSunsetRequest {
             self.completion(sunInfo)
         }
     }
-}
-
-struct SunriseSunsetInfo: Codable {
-    public var results: Info
-    public var date: String?
     
-    struct Info: Codable {
-        var sunrise: String
-        var sunset: String
-        var dayLength: String
-        var twilightBegin: String
-        var twilightEnd: String
+    func fetchInfoForDate(_ date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         
-        enum CodingKeys: String, CodingKey {
-            case sunrise = "sunrise"
-            case sunset = "sunset"
-            case dayLength = "day_length"
-            case twilightBegin = "civil_twilight_begin"
-            case twilightEnd = "civil_twilight_end"
-        }
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.sunrise-sunset.org"
+        urlComponents.path = "/json"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "lat", value: String(latitude)),
+            URLQueryItem(name: "lng", value: String(longtitude)),
+            URLQueryItem(name: "date", value: formatter.string(from: date))
+        ]
+        print(formatter.string(from: date))
+        print(urlComponents.url!)
+        URLSession.shared.dataTask(with: urlComponents.url!) { (data, response, error) in
+            DispatchQueue.main.async {
+                var info = try! JSONDecoder().decode(SunriseSunsetInfo.self, from: data!)
+                info.date = formatter.string(from: date)
+                self.completion([info])
+            }
+        }.resume()
     }
 }

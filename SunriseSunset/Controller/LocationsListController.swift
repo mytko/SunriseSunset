@@ -51,10 +51,12 @@ class LocationsListController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "solarInfo" {
             if let destination = segue.destination as? SolarInfoController, let cell = sender as? UITableViewCell {
-                destination.selectedLocationIndex = (locationsTableView.indexPath(for: cell)?.row)!
+                print(locationsTableView.indexPath(for: cell)!.section)
+                destination.selectedLocation = fetchedResultsController?.fetchedObjects?[locationsTableView.indexPath(for: cell)!.section]
             }
         }
     }
+
 }
 
 extension LocationsListController: UITableViewDataSource {
@@ -68,7 +70,6 @@ extension LocationsListController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LocationCell
-        let solarInfo = fetchedResultsController?.fetchedObjects?[indexPath.item].solarInfoFor(date: Date())
         cell.setupCell(location: (fetchedResultsController?.fetchedObjects?[indexPath.section])!)
         return cell
     }

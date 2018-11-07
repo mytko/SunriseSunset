@@ -34,7 +34,7 @@ public class Location: NSManagedObject {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        formatter.dateFormat = "yy/mm/dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         let filteredInfo = solarInformation.filter { formatter.string(from: $0.date! as Date) == formatter.string(from: date) }.first
         return filteredInfo
@@ -61,11 +61,11 @@ public class Location: NSManagedObject {
         if let currentLocation = Location.currentLocationFrom(userDefaults: userDefaults) {
             Location.deleteLocation(currentLocation)
         }
-        
+       
         saveLocationToUserDefaults(userDefaults)
         
         do {
-            try managedObjectContext?.save()
+            try CoreDataStack.shared.managedContext.save()
         } catch {
             fatalError()
         }

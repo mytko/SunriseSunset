@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CoreData
 
 class LocationSunInfoManager: NSObject {
     
@@ -17,9 +18,7 @@ class LocationSunInfoManager: NSObject {
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.dateFormat = "YY-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }
     
@@ -37,7 +36,10 @@ class LocationSunInfoManager: NSObject {
     }
     
     init(latitude: Double, longitude: Double, completion: @escaping (Location) -> ()) {
-        self.location = Location(context: CoreDataStack.shared.managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Location", in: CoreDataStack.shared.managedContext)!
+        
+        location = Location(entity: entity,
+                            insertInto: nil)
         location.latitude = latitude
         location.longitude = longitude
         self.completion = completion
@@ -74,7 +76,6 @@ class LocationSunInfoManager: NSObject {
             guard let placeNotations = placeMarks?[0] else {
                 return
             }
-            print(placeNotations)
             self.setLocationPlacemarks(placeNotations)
             completion(self.location)
         }
@@ -110,6 +111,7 @@ extension LocationSunInfoManager: CLLocationManagerDelegate {
         }
         
         location = Location(context: CoreDataStack.shared.managedContext)
+        
         location.latitude = currentLocation.coordinate.latitude
         location.longitude = currentLocation.coordinate.longitude
         location.utcOffset = Int64(TimeZone.current.secondsFromGMT() / 60)

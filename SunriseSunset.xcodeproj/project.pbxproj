@@ -17,9 +17,9 @@
 		AC418B8D2188D06100D8E7A6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B8C2188D06100D8E7A6 /* CoreDataStack.swift */; };
 		AC418B8F2188D0FC00D8E7A6 /* LocationsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */; };
 		AC418B932188D4E400D8E7A6 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B922188D4E400D8E7A6 /* LocationCell.swift */; };
-		AC418B9521891A1100D8E7A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC418B9421891A1100D8E7A6 /* Constants.swift */; };
+		AC65CA7821933B1200CB8CA4 /* String+FormatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC65CA7721933B1200CB8CA4 /* String+FormatTime.swift */; };
 		AC739EA6218B3A750023877A /* PlaceAutocompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */; };
-		AC739EA8218B3C260023877A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA7218B3C260023877A /* Place.swift */; };
+		AC739EA8218B3C260023877A /* CodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA7218B3C260023877A /* CodableObjects.swift */; };
 		AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */; };
 		ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC0B0D218E13A1001209BE /* LocationManager.swift */; };
 		ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */; };
@@ -44,9 +44,9 @@
 		AC418B8C2188D06100D8E7A6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListController.swift; sourceTree = "<group>"; };
 		AC418B922188D4E400D8E7A6 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		AC418B9421891A1100D8E7A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AC65CA7721933B1200CB8CA4 /* String+FormatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FormatTime.swift"; sourceTree = "<group>"; };
 		AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAutocompleteRequest.swift; sourceTree = "<group>"; };
-		AC739EA7218B3C260023877A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		AC739EA7218B3C260023877A /* CodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjects.swift; sourceTree = "<group>"; };
 		AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAutocompleteCell.swift; sourceTree = "<group>"; };
 		ACAC0B0D218E13A1001209BE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunInfoCell.swift; sourceTree = "<group>"; };
@@ -92,8 +92,8 @@
 			children = (
 				ACF4AE7E2187A6C90092C453 /* SolarInfoController.swift */,
 				AC418B8E2188D0FC00D8E7A6 /* LocationsListController.swift */,
-				AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */,
 				ACF406FF2190677F0041E662 /* DatePickerController.swift */,
+				AC3A4E922189BF69003F7BD3 /* SearchLocationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,6 +109,24 @@
 				ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AC65CA7621933A5500CB8CA4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */,
+				AC418B812188476900D8E7A6 /* Request.swift */,
+				AC739EA7218B3C260023877A /* CodableObjects.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AC968A9C2192600600AED39B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC65CA7721933B1200CB8CA4 /* String+FormatTime.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ACF4AE702187A6C90092C453 = {
@@ -130,17 +148,15 @@
 		ACF4AE7B2187A6C90092C453 /* SunriseSunset */ = {
 			isa = PBXGroup;
 			children = (
+				AC65CA7621933A5500CB8CA4 /* Network */,
 				AC418B832188C54900D8E7A6 /* Model */,
 				AC418B912188D1B500D8E7A6 /* View */,
 				AC418B902188D12700D8E7A6 /* Controller */,
+				AC968A9C2192600600AED39B /* Extensions */,
 				ACF4AE7C2187A6C90092C453 /* AppDelegate.swift */,
 				ACF4AE862187A6CA0092C453 /* Assets.xcassets */,
 				ACF4AE882187A6CA0092C453 /* LaunchScreen.storyboard */,
 				ACF4AE8B2187A6CA0092C453 /* Info.plist */,
-				AC418B812188476900D8E7A6 /* Request.swift */,
-				AC418B9421891A1100D8E7A6 /* Constants.swift */,
-				AC739EA5218B3A750023877A /* PlaceAutocompleteRequest.swift */,
-				AC739EA7218B3C260023877A /* Place.swift */,
 			);
 			path = SunriseSunset;
 			sourceTree = "<group>";
@@ -221,13 +237,14 @@
 				ACF4AE7F2187A6C90092C453 /* SolarInfoController.swift in Sources */,
 				AC418B882188C56700D8E7A6 /* SolarInfo+CoreDataClass.swift in Sources */,
 				AC3A4E932189BF69003F7BD3 /* SearchLocationController.swift in Sources */,
+				AC65CA7821933B1200CB8CA4 /* String+FormatTime.swift in Sources */,
 				AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */,
 				AC418B8D2188D06100D8E7A6 /* CoreDataStack.swift in Sources */,
 				AC418B8F2188D0FC00D8E7A6 /* LocationsListController.swift in Sources */,
 				ACF4AE852187A6C90092C453 /* SunriseSunset.xcdatamodeld in Sources */,
 				AC739EA6218B3A750023877A /* PlaceAutocompleteRequest.swift in Sources */,
 				AC418B932188D4E400D8E7A6 /* LocationCell.swift in Sources */,
-				AC739EA8218B3C260023877A /* Place.swift in Sources */,
+				AC739EA8218B3C260023877A /* CodableObjects.swift in Sources */,
 				ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */,
 				AC418B8A2188C56700D8E7A6 /* Location+CoreDataClass.swift in Sources */,
 				ACF407002190677F0041E662 /* DatePickerController.swift in Sources */,
@@ -236,7 +253,6 @@
 				ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */,
 				ACF4AE7D2187A6C90092C453 /* AppDelegate.swift in Sources */,
 				ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */,
-				AC418B9521891A1100D8E7A6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

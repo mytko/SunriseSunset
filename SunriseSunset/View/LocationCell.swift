@@ -16,17 +16,14 @@ class LocationCell: UITableViewCell {
     
     func setupCell(location: Location) {
         let sunInfo = location.solarInformation.first!
-        sunriseLabel.text = sunInfo.sunrise
-        sunsetLabel.text = sunInfo.sunset
+        sunriseLabel.text = sunInfo.sunrise?.convertTwelveHour(utcOffset: Int(location.utcOffset))
+        sunsetLabel.text = sunInfo.sunset?.convertTwelveHour(utcOffset: Int(location.utcOffset))
         locationDescriptionLabel.text = location.city 
         timeLabel.text = location.time
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 7
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     }
 }

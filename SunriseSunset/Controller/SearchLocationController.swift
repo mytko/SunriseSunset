@@ -17,6 +17,8 @@ class SearchLocationController: UIViewController {
     @IBOutlet weak var suggestionTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addLocationButton: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var locationStackView: UIStackView!
     
     @IBAction func handleLongPress(_ sender: UILongPressGestureRecognizer) {
         let point = sender.location(in: mapView)
@@ -27,22 +29,24 @@ class SearchLocationController: UIViewController {
         
         annotation.coordinate = coordinate
         
-      mapView.removeAnnotations(mapView.annotations)
+        mapView.removeAnnotations(mapView.annotations)
         
         mapView.addAnnotation(annotation)
         
         locationManager = LocationSunInfoManager(latitude: coordinate.latitude, longitude: coordinate.longitude) { location in
         }
+        
         locationManager.geocodeLocation { location in
             self.locationLabel.text = "\(location.city!), \(location.country!)"
+            self.locationStackView.isHidden = false
+            self.containerView.isHidden = false
         }
     }
+    
     
     let searchController = UISearchController(searchResultsController: nil)
     
     var locationManager: LocationSunInfoManager!
-    
-    let regionRadius: CLLocationDistance = 10000
     
     var placeRequest: PlaceAutocompleteRequest!
     
@@ -68,19 +72,32 @@ class SearchLocationController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search city"
+        searchController.searchBar.showsCancelButton = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
     
     func setupAddLocationButton() {
-        addLocationButton.layer.cornerRadius = 15
-        addLocationButton.layer.masksToBounds = true
         addLocationButton.addTarget(self, action: #selector(addLocation(_:)), for: .touchUpInside)
     }
     
     @objc func addLocation(_ sender: UIButton) {
+        locationManager.completion = { location in
+            CoreDataStack.shared.managedContext.insert(location)
+            CoreDataStack.shared.saveContext()
+            self.dismiss(animated: true, completion: nil)
+        }
         locationManager.updateSolarInfo()
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        containerView.layer.cornerRadius = 15
+        addLocationButton.layer.cornerRadius = 10
     }
 }
 
@@ -121,7 +138,7 @@ extension SearchLocationController: UISearchResultsUpdating {
 extension SearchLocationController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         UIView.animate(withDuration: 0.5, animations: {
-            self.suggestionTableViewHeightConstraint.constant = 200
+            self.suggestionTableViewHeightConstraint.constant = self.view.frame.height
         })
         enteredLocation = searchText
         NSObject.cancelPreviousPerformRequests(withTarget: placeRequest, selector: #selector(placeRequest.getAutocompleteFor(description:)), object: previouslySearched)
@@ -142,7 +159,12 @@ extension SearchLocationController: UISearchBarDelegate {
 
 extension SearchLocationController: PlaceAutocompleteRequestDelegate {
     func placeDetail(_ location: Location) {
-        let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), latitudinalMeters: self.regionRadius, longitudinalMeters: self.regionRadius)
+        let regionRadius: CLLocationDistance = 10000
+        let coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        locationLabel.text = (location.city ?? "") + (location.country ?? "")
+        locationStackView.isHidden = false
+        containerView.isHidden = false
+        
         locationManager = LocationSunInfoManager(location: location) {_ in
             CoreDataStack.shared.saveContext()
             self.dismiss(animated: true, completion: nil)

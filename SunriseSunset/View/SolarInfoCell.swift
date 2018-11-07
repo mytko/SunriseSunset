@@ -17,48 +17,27 @@ class SolarInfoCell: UICollectionViewCell {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var locationDescriptionLabel: UILabel!
     @IBOutlet weak var upcomingDaysInfoCollectionView: UICollectionView!
+    @IBOutlet weak var dateLabel: UILabel!
     
-    var location: Location! {
-        didSet {
-            updateCell()
-        }
-    }
+    var sunWeekInfo: [SolarInfo] = []
     
-    private func convertTime(_ time: String) -> String {
-        let current = Location.currentLocationFrom(userDefaults: UserDefaults.standard)!
-        let calendar = Calendar.current
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .medium
-        formatter.dateFormat = "hh:mm:ss a"
-        formatter.amSymbol = "am"
-        formatter.pmSymbol = "pm"
-        var date = formatter.date(from: time)!
-        date = calendar.date(byAdding: .minute, value: Int(location.utcOffset), to: date)!
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: date)
-    }
-    
-    func updateCell() {
-        let today =  location.solarInformation.first!
-        print(today.sunset)
-        print(convertTime(today.sunset!))
-        sunsetLabel.text = convertTime(today.sunset ?? "")
-        sunriseLabel.text = convertTime(today.sunrise ?? "")
-        twilightEndLabel.text = today.twilightEnd
-        twilightBeginLabel.text = today.twilightBegin
-        dayLengthLabel.text = today.dayLength
-        upcomingDaysInfoCollectionView.reloadData()
+    func updateCell(location: Location, solarInfo: SolarInfo) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
         locationDescriptionLabel.text = location.city
+        dateLabel.text = dateFormatter.string(for: solarInfo.date! as Date)
+        sunsetLabel.text = solarInfo.sunset?.convertTwelveHour(utcOffset: Int(location.utcOffset))
+        sunriseLabel.text = solarInfo.sunrise?.convertTwelveHour(utcOffset: Int(location.utcOffset))
+        twilightEndLabel.text = solarInfo.twilightEnd?.convertTwelveHour(utcOffset: Int(location.utcOffset))
+        twilightBeginLabel.text = solarInfo.twilightBegin?.convertTwelveHour(utcOffset: Int(location.utcOffset))
+        dayLengthLabel.text = solarInfo.dayLength
+        sunWeekInfo = location.solarInformation
+        upcomingDaysInfoCollectionView.reloadData()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         upcomingDaysInfoCollectionView.dataSource = self
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         upcomingDaysInfoCollectionView.layer.borderColor = UIColor.white.cgColor
         upcomingDaysInfoCollectionView.layer.borderWidth = 0.4
     }
@@ -67,12 +46,13 @@ class SolarInfoCell: UICollectionViewCell {
 extension SolarInfoCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection
         section: Int) -> Int {
-        return location.solarInformation.count
+        return sunWeekInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DailySunInfoCell
-        cell.sunInfo = location.solarInformation[indexPath.item]
+        cell.sunInfo = sunWeekInfo[indexPath.item]
         return cell
     }
 }
+

@@ -55,6 +55,18 @@ public class Location: NSManagedObject {
         }
     }
     
+    func delete() {
+        if let context = self.managedObjectContext {
+            print("deletion")
+            context.delete(self)
+            do {
+                try context.save()
+            } catch {
+                fatalError("Error occured while deleting location")
+            }
+        }
+    }
+    
     func saveAsCurrentLocation() {
         let userDefaults = UserDefaults.standard
     

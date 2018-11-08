@@ -75,8 +75,6 @@ class SunriseSunsetRequest {
             URLQueryItem(name: "lng", value: String(longtitude)),
             URLQueryItem(name: "date", value: formatter.string(from: date))
         ]
-        print(formatter.string(from: date))
-        print(urlComponents.url!)
         URLSession.shared.dataTask(with: urlComponents.url!) { (data, response, error) in
             DispatchQueue.main.async {
                 var info = try! JSONDecoder().decode(SunriseSunsetInfo.self, from: data!)

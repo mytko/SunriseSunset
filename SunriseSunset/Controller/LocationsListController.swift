@@ -83,13 +83,18 @@ extension LocationsListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let userDefaults = UserDefaults.standard
-        if Location.currentLocationFrom(userDefaults: userDefaults)!.city == fetchedResultsController?.fetchedObjects![indexPath.item].city {
+        if Location.currentLocationFrom(userDefaults: userDefaults)!.city == fetchedResultsController?.fetchedObjects![indexPath.section].city {
             return
         }
         if editingStyle == .delete {
-            CoreDataStack.shared.managedContext.delete((fetchedResultsController?.fetchedObjects![indexPath.item])!)
+            fetchedResultsController?.fetchedObjects?[indexPath.section].delete()
+            do {
+                try fetchedResultsController?.performFetch()
+            } catch {
+                fatalError()
+            }
             tableView.beginUpdates()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.deleteSections([indexPath.section], with: .automatic)
             tableView.endUpdates()
         }
     }

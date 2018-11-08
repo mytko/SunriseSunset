@@ -89,7 +89,7 @@ class SolarInfoController: UIViewController {
         let context = CIContext(options: nil)
         let inputImage = CIImage(cgImage: sourceImage.cgImage as! CGImage)
         //  Setting up Gaussian Blur
-        var filter = CIFilter(name: "CIGaussianBlur")
+        let filter = CIFilter(name: "CIGaussianBlur")
         filter?.setValue(inputImage, forKey: kCIInputImageKey)
         filter?.setValue(50.0, forKey: "inputRadius")
         let result = filter?.value(forKey: kCIOutputImageKey) as? CIImage

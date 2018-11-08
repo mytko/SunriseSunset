@@ -15,6 +15,7 @@ class SolarInfoController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var locationcSolarInfoCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var locationManager: LocationSunInfoManager!
     
@@ -37,6 +38,8 @@ class SolarInfoController: UIViewController {
         activityIndicator.startAnimating()
         NotificationCenter.default.addObserver(self, selector: #selector(fetchSolarData), name: NSNotification.Name("locationCalculated"), object: nil)
         toolBar.addSubview(pageControl)
+        
+        backgroundImage.image = self.blurredImage(with: backgroundImage.image!)
         
         setupFetchedResultsController()
         refreshUI()
@@ -80,6 +83,25 @@ class SolarInfoController: UIViewController {
             datePickerController.delegate = self
         }
     }
+    
+    func blurredImage(with sourceImage: UIImage) -> UIImage {
+        //  Create our blurred image
+        let context = CIContext(options: nil)
+        let inputImage = CIImage(cgImage: sourceImage.cgImage as! CGImage)
+        //  Setting up Gaussian Blur
+        var filter = CIFilter(name: "CIGaussianBlur")
+        filter?.setValue(inputImage, forKey: kCIInputImageKey)
+        filter?.setValue(50.0, forKey: "inputRadius")
+        let result = filter?.value(forKey: kCIOutputImageKey) as? CIImage
+        
+        /*  CIGaussianBlur has a tendency to shrink the image a little, this ensures it matches
+         *  up exactly to the bounds of our original image */
+        
+        let cgImage = context.createCGImage(result ?? CIImage(), from: inputImage.extent)
+        let retVal = UIImage(cgImage: cgImage!)
+        return retVal
+    }
+
     
     func indexPathOfLocation(_ location: Location) -> IndexPath {
         let item = fetchedRC.fetchedObjects?.firstIndex { $0.city == location.city }

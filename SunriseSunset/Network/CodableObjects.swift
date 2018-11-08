@@ -52,13 +52,23 @@ struct SunriseSunsetInfo: Codable {
         var dayLength: String
         var twilightBegin: String
         var twilightEnd: String
+        var nauticalLightBegin: String
+        var nauticalLightEnd: String
+        var astroLightBegin: String
+        var astroLightEnd: String
+        var solarNoon: String
         
         enum CodingKeys: String, CodingKey {
-            case sunrise = "sunrise"
-            case sunset = "sunset"
+            case sunrise
+            case sunset
             case dayLength = "day_length"
             case twilightBegin = "civil_twilight_begin"
             case twilightEnd = "civil_twilight_end"
+            case nauticalLightBegin = "nautical_twilight_begin"
+            case nauticalLightEnd = "nautical_twilight_end"
+            case astroLightBegin = "astronomical_twilight_begin"
+            case astroLightEnd = "astronomical_twilight_end"
+            case solarNoon = "solar_noon"
         }
     }
 }

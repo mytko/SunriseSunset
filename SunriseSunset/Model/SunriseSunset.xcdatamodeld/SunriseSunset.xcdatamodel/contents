@@ -10,8 +10,13 @@
         <relationship name="solarInfo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SolarInfo" inverseName="location" inverseEntity="SolarInfo" syncable="YES"/>
     </entity>
     <entity name="SolarInfo" representedClassName=".SolarInfo" syncable="YES">
+        <attribute name="astroTwilightBegin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="astroTwilightEnd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dayLength" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nauticalTwilightBegin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nauticalTwilightEnd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="solarNoon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sunrise" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sunset" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twilightBegin" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,6 +25,6 @@
     </entity>
     <elements>
         <element name="Location" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="SolarInfo" positionX="-54" positionY="18" width="128" height="150"/>
+        <element name="SolarInfo" positionX="-54" positionY="18" width="128" height="225"/>
     </elements>
 </model>

@@ -84,16 +84,11 @@ class LocationSunInfoManager: NSObject {
     private func setSolarInformation(_ completion: @escaping ([SolarInfo]) -> ()) {
         let request = SunriseSunsetRequest(latitude: location.latitude, longtitude: location.longitude) { solarInformation in
             let result = solarInformation.map { info -> SolarInfo in
-                let solarInfo = SolarInfo(context: CoreDataStack.shared.managedContext)
+                let solarInfo = SolarInfo.initWith(info: info)
                 solarInfo.location = self.location
-                solarInfo.sunrise = info.results.sunrise
-                solarInfo.sunset = info.results.sunset
-                solarInfo.date = self.dateFormatter.date(from: info.date!) as NSDate?
-                solarInfo.dayLength = info.results.dayLength
-                solarInfo.twilightEnd = info.results.twilightEnd
-                solarInfo.twilightBegin = info.results.twilightBegin
                 return solarInfo
             }
+            self.location.solarInfo = NSSet(array: result)
             completion(result)
         }
         request.fetchSunInfoFrom(date: Date(), days: 7)
@@ -109,20 +104,18 @@ extension LocationSunInfoManager: CLLocationManagerDelegate {
         guard let currentLocation = manager.location else {
             return
         }
+        let entity = NSEntityDescription.entity(forEntityName: "Location", in: CoreDataStack.shared.managedContext)
         
-        location = Location(context: CoreDataStack.shared.managedContext)
-        
+        location = Location(entity: entity!, insertInto: nil)
         location.latitude = currentLocation.coordinate.latitude
         location.longitude = currentLocation.coordinate.longitude
         location.utcOffset = Int64(TimeZone.current.secondsFromGMT() / 60)
         
-        //Setting Location placemarks
         dispatchGroup.enter()
         geocodeLocation {_ in
             self.dispatchGroup.leave()
         }
         
-        //Setting SolarInformation
         dispatchGroup.enter()
         setSolarInformation { _ in
             self.dispatchGroup.leave()

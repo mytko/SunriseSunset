@@ -64,15 +64,12 @@ public class Location: NSManagedObject {
        
         saveLocationToUserDefaults(userDefaults)
         
-        do {
-            try CoreDataStack.shared.managedContext.save()
-        } catch {
-            fatalError()
-        }
+        self.saveLocation()
     }
     
     public static func initWith(placeDetail: PlaceDetail) -> Location {
-        let location = Location(context: CoreDataStack.shared.managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Location", in: CoreDataStack.shared.managedContext)!
+        let location = Location(entity: entity, insertInto: nil)
         location.city = placeDetail.result.description
         location.latitude = placeDetail.result.geometry.location.lat
         location.longitude = placeDetail.result.geometry.location.lng
@@ -91,6 +88,12 @@ public class Location: NSManagedObject {
         userDefaults.set(Date(), forKey: "lastTimeOpened")
     }
 
+    func saveLocation() {
+        CoreDataStack.shared.managedContext.insert(self)
+        solarInfo!.forEach { CoreDataStack.shared.managedContext.insert($0 as! NSManagedObject) }
+        CoreDataStack.shared.saveContext()
+    }
+    
     static public func currentLocationFrom(userDefaults: UserDefaults) -> Location? {
         let entity = NSEntityDescription.entity(forEntityName: "Location", in: CoreDataStack.shared.managedContext)!
         let currentLocation = Location(entity: entity, insertInto: nil)

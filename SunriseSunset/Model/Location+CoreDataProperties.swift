@@ -2,7 +2,7 @@
 //  Location+CoreDataProperties.swift
 //  SunriseSunset
 //
-//  Created by Vasyl Mytko on 11/4/18.
+//  Created by Vasyl Mytko on 11/8/18.
 //  Copyright © 2018 Vasyl Mytko. All rights reserved.
 //
 //

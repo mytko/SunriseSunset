@@ -41,8 +41,6 @@ class SunriseSunsetRequest {
         
         var sunInfo: [SunriseSunsetInfo] = []
         
-        print(dateFormatter.string(from: date))
-        
         let _ = DispatchQueue.global(qos: .userInitiated)
         DispatchQueue.concurrentPerform(iterations: days) { index in
             var components = urlComponents

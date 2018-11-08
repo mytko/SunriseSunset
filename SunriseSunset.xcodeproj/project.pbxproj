@@ -22,7 +22,9 @@
 		AC739EA8218B3C260023877A /* CodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA7218B3C260023877A /* CodableObjects.swift */; };
 		AC739EAA218B80B50023877A /* LocationAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */; };
 		ACA437902193A0A000810E74 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACA4378F2193A0A000810E74 /* Keys.plist */; };
+		ACA437922193CC5200810E74 /* DetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA437912193CC5200810E74 /* DetailInfoCell.swift */; };
 		ACAC0B0E218E13A1001209BE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC0B0D218E13A1001209BE /* LocationManager.swift */; };
+		ACAD871921946A0300FBABC1 /* Bundle+PlistContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD871821946A0300FBABC1 /* Bundle+PlistContents.swift */; };
 		ACB44C6A218CE3FB004FF8B4 /* DailySunInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */; };
 		ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */; };
 		ACF407002190677F0041E662 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF406FF2190677F0041E662 /* DatePickerController.swift */; };
@@ -50,7 +52,9 @@
 		AC739EA7218B3C260023877A /* CodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjects.swift; sourceTree = "<group>"; };
 		AC739EA9218B80B50023877A /* LocationAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAutocompleteCell.swift; sourceTree = "<group>"; };
 		ACA4378F2193A0A000810E74 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		ACA437912193CC5200810E74 /* DetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoCell.swift; sourceTree = "<group>"; };
 		ACAC0B0D218E13A1001209BE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		ACAD871821946A0300FBABC1 /* Bundle+PlistContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+PlistContents.swift"; sourceTree = "<group>"; };
 		ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunInfoCell.swift; sourceTree = "<group>"; };
 		ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarInfoCell.swift; sourceTree = "<group>"; };
 		ACF406FF2190677F0041E662 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				AC3A4E902189BDB8003F7BD3 /* SearchLocation.storyboard */,
 				ACB44C69218CE3FB004FF8B4 /* DailySunInfoCell.swift */,
 				ACB44C6B218D225D004FF8B4 /* SolarInfoCell.swift */,
+				ACA437912193CC5200810E74 /* DetailInfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				AC65CA7721933B1200CB8CA4 /* String+FormatTime.swift */,
+				ACAD871821946A0300FBABC1 /* Bundle+PlistContents.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +259,8 @@
 				AC418B8A2188C56700D8E7A6 /* Location+CoreDataClass.swift in Sources */,
 				ACF407002190677F0041E662 /* DatePickerController.swift in Sources */,
 				AC418B8B2188C56700D8E7A6 /* Location+CoreDataProperties.swift in Sources */,
+				ACAD871921946A0300FBABC1 /* Bundle+PlistContents.swift in Sources */,
+				ACA437922193CC5200810E74 /* DetailInfoCell.swift in Sources */,
 				AC418B822188476900D8E7A6 /* Request.swift in Sources */,
 				ACB44C6C218D225D004FF8B4 /* SolarInfoCell.swift in Sources */,
 				ACF4AE7D2187A6C90092C453 /* AppDelegate.swift in Sources */,

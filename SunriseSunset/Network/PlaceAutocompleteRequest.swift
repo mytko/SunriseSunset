@@ -17,7 +17,9 @@ class PlaceAutocompleteRequest: NSObject {
     }
     
     @objc public func getAutocompleteFor(description: String) {
-        let url = buildURLWith(description: description)
+        guard let url = buildURLWith(description: description) else {
+            return
+        }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 print(try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments))
@@ -28,13 +30,10 @@ class PlaceAutocompleteRequest: NSObject {
     }
     
     func fetchPlaceDetailInformation(for id: String) {
-        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let url = URL(string: path),
-            let dict = NSDictionary(contentsOf: url),
-            let key = dict["key"] as? String else {
-            return
+        let dict = Bundle.contentsOfFile(plistName: "Keys.plist")
+        guard let key = dict["googlePlacesKey"] as? String else {
+            return 
         }
-        
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "maps.googleapis.com"
@@ -53,15 +52,19 @@ class PlaceAutocompleteRequest: NSObject {
         }.resume()
     }
     
-    private func buildURLWith(description: String) -> URL {
+    private func buildURLWith(description: String) -> URL? {
+        let dict = Bundle.contentsOfFile(plistName: "Keys.plist")
+        guard let key = dict["googlePlacesKey"] as? String else {
+            return nil
+        }
         var urlComponetns = URLComponents()
         urlComponetns.scheme = "https"
         urlComponetns.host = "maps.googleapis.com"
         urlComponetns.path = "/maps/api/place/autocomplete/json"
         urlComponetns.queryItems = [
-            URLQueryItem(name: "key", value: "AIzaSyDKStABOvHicYu99-m-qa64dQcYeK8Y4tM"),
+            URLQueryItem(name: "key", value: key),
             URLQueryItem(name: "input", value: description),
-            URLQueryItem(name: "types", value: "\(PlaceType.geocode.description)")
+            URLQueryItem(name: "types", value: PlaceType.geocode.description)
         ]
         return urlComponetns.url!
     }

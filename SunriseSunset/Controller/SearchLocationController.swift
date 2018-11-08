@@ -34,6 +34,8 @@ class SearchLocationController: UIViewController {
         mapView.addAnnotation(annotation)
         
         locationManager = LocationSunInfoManager(latitude: coordinate.latitude, longitude: coordinate.longitude) { location in
+            location.saveLocation()
+            self.dismiss(animated: true, completion: nil)
         }
         
         locationManager.geocodeLocation { location in
@@ -82,11 +84,6 @@ class SearchLocationController: UIViewController {
     }
     
     @objc func addLocation(_ sender: UIButton) {
-        locationManager.completion = { location in
-            CoreDataStack.shared.managedContext.insert(location)
-            CoreDataStack.shared.saveContext()
-            self.dismiss(animated: true, completion: nil)
-        }
         locationManager.updateSolarInfo()
     }
     
@@ -165,11 +162,11 @@ extension SearchLocationController: PlaceAutocompleteRequestDelegate {
         locationStackView.isHidden = false
         containerView.isHidden = false
         
-        locationManager = LocationSunInfoManager(location: location) {_ in
-            CoreDataStack.shared.saveContext()
+        locationManager = LocationSunInfoManager(location: location) { calculatedLocation in
+            calculatedLocation.saveLocation()
             self.dismiss(animated: true, completion: nil)
         }
-        
+
         let annotation = MKPointAnnotation()
         let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         annotation.coordinate = coordinate

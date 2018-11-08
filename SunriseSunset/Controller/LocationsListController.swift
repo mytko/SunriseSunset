@@ -80,6 +80,19 @@ extension LocationsListController: UITableViewDelegate {
         footer.backgroundColor = .clear
         return footer
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let userDefaults = UserDefaults.standard
+        if Location.currentLocationFrom(userDefaults: userDefaults)!.city == fetchedResultsController?.fetchedObjects![indexPath.item].city {
+            return
+        }
+        if editingStyle == .delete {
+            CoreDataStack.shared.managedContext.delete((fetchedResultsController?.fetchedObjects![indexPath.item])!)
+            tableView.beginUpdates()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 }
 
 

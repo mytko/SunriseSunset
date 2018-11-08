@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let directory = NSPersistentContainer.defaultDirectoryURL()
+        let url = directory.appendingPathComponent("CalorieCOunter" + ".sqlite")
         
-        
+        print(url)
         locationSunInfoManager.getCurrentLocation()
         return true
     }
